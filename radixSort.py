@@ -8,7 +8,6 @@ __version__ = "2022-03-20"
 
 import random
 import time
-from atds import *
 
 def radixSort(nums):
     maxDigit = max(nums) #finds the largest number in the list
@@ -64,11 +63,6 @@ def checkList(nums):
     return True
 
 def insertionSort(nums):
-    '''
-    The Insertion Sort takes a list of values and begins working through from left to right with a sublist of increasing size. The sublist consisting of only the first value is considered sorted.
-    The next value is compared to the sublist and placed in the correct position.
-    Continue with items to the right of the sublist until the entire list has been sorted.
-    '''
     for index in range(len(nums)):
         #print(nums)
         currentvalue = nums[index]
@@ -81,9 +75,6 @@ def insertionSort(nums):
     return nums
 
 def selection_sort(nums):
-    """Takes the list "nums" and sorts it using the
-    Selection Sort algorithm.
-    """
     first_item_index = 0
     for first_item_index in range(len(nums)):
         smallest_value_index = first_item_index
@@ -95,41 +86,6 @@ def selection_sort(nums):
     
     return nums
 
-
-
-def quickSort(nums):
-    """Uses a stack for quicksort"""
-    stack = []
-    stack.append(0)
-    stack.append(len(nums) - 1)
-    while len(stack) > 0:
-        right = stack.pop()
-        left = stack.pop()
-        pivot = partition(nums, left, right)
-        if pivot - 1 > left:
-            stack.append(left)
-            stack.append(pivot - 1)
-        if pivot + 1 < right:
-            stack.append(pivot + 1)
-            stack.append(right)
-    return nums
-
-def partition(nums, left, right):
-    pivot = nums[left]
-    left_index = left + 1
-    right_index = right
-    while True:
-        while left_index <= right_index and nums[left_index] <= pivot:
-            left_index += 1
-        while left_index <= right_index and nums[right_index] >= pivot:
-            right_index -= 1
-        if left_index > right_index:
-            break
-        nums[left_index], nums[right_index] = nums[right_index], nums[left_index]
-    nums[left], nums[right_index] = nums[right_index], nums[left]
-    return right_index
-
-    
 
 
 def main():
